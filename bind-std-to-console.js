@@ -15,6 +15,8 @@ function BindStdToConsole() {
     this._stderrRaw = undefined;
     this._stderrWrite = undefined;
 
+    this.started = false;
+
     if (process.env.NODE_ENV === 'development') {
         this.start();
     }
@@ -22,6 +24,13 @@ function BindStdToConsole() {
 
 BindStdToConsole.prototype.start = function () {
     const self = this;
+
+    // Avoid to be executed twice
+    if (this.started) {
+        return;
+    }
+    this.started = true;
+
     this._stdoutRaw = process.stdout.write;
     this._stderrRaw = process.stderr.write;
 
@@ -113,6 +122,7 @@ BindStdToConsole.prototype.start = function () {
 };
 
 BindStdToConsole.prototype.stop = function () {
+    this.started = false;
     if (this._stdoutWrite === process.stdout.write && this._stdoutRaw) {
         process.stdout.write = this._stdoutRaw;
         console._stdout = process.stdout;

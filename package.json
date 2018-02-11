@@ -2,9 +2,9 @@
   "name": "bind-std-to-console",
   "version": "1.0.1",
   "description": "Run node with --inspect and see what is in your stdout and stderr. Simple like first import in your app boot.",
-  "main": "index.js",
+  "main": "bind-std-to-console.js",
   "scripts": {
-    "start": "nodemon --inspect-brk --expose-gc dev.js",
+    "start": "nodemon --inspect --expose-gc dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
