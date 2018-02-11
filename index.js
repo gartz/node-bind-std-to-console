@@ -15,7 +15,9 @@ function BindStdToConsole() {
     this._stderrRaw = undefined;
     this._stderrWrite = undefined;
 
-    this.start();
+    if (process.env.NODE_ENV === 'development') {
+        this.start();
+    }
 }
 
 BindStdToConsole.prototype.start = function () {
