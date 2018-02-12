@@ -4,6 +4,8 @@
   "description": "Run node with --inspect and see what is in your stdout and stderr. Simple like first import in your app boot.",
   "main": "bind-std-to-console.js",
   "scripts": {
+    "preversion": "git pull",
+    "postversion": "git push && git push --tags",
     "start": "nodemon --inspect --expose-gc dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +19,13 @@
   ],
   "author": "Gabriel Reitz Giannattasio <g@gartz.me>",
   "license": "ISC",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/gartz/node-bind-std-to-console.git"
+  },
+  "bugs": {
+    "url" : "https://github.com/gartz/node-bind-std-to-console/issues"
+  },
   "devDependencies": {
     "nodemon": "^1.14.12"
   }
