@@ -15,7 +15,7 @@ The reason that Winston sends directly to stdout/stderr is that those streams ar
 
 That's why you should never run this in production. It will only start automaticaly if it's in a `development`. Enjoy it :)
 
-Install:
+## How to install
 
 ```bash
 npm install bind-std-to-console --save-dev
@@ -26,3 +26,12 @@ Before to your app before other libs, as closes as to the first line, most proba
 require('bind-std-to-console');
 // The logic from your server app
 ```
+
+## Demo
+
+Enabled:
+[[https://github.com/gartz/node-bind-std-to-console/blob/master/assets/enabled.gif|alt=octocat]]
+
+Disabled:
+[[https://github.com/gartz/node-bind-std-to-console/blob/master/assets/disabled.gif|alt=octocat]]
+

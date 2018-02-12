@@ -12,7 +12,9 @@ const server = net.createServer().listen(pathToTheSocket, () => {
     console.info('Test server has started, use inspector to test it.');
 
     const bstc = require('./bind-std-to-console');
-    bstc.start();
+    if (process.env.NODE_ENV !== 'production') {
+        bstc.start();
+    }
 
     setTimeout(() => {
         console.log('Console: foo');
