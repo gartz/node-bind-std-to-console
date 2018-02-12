@@ -30,8 +30,8 @@ require('bind-std-to-console');
 ## Demo
 
 Enabled:
-[[https://github.com/gartz/node-bind-std-to-console/blob/master/assets/enabled.gif|alt=octocat]]
+![module enabled](https://github.com/gartz/node-bind-std-to-console/blob/master/assets/enabled.gif)
 
 Disabled:
-[[https://github.com/gartz/node-bind-std-to-console/blob/master/assets/disabled.gif|alt=octocat]]
+![module disabled](https://github.com/gartz/node-bind-std-to-console/blob/master/assets/disabled.gif)
 
