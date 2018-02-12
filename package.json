@@ -1,6 +1,6 @@
 {
   "name": "bind-std-to-console",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Run node with --inspect and see what is in your stdout and stderr. Simple like first import in your app boot.",
   "main": "bind-std-to-console.js",
   "scripts": {
@@ -19,12 +19,12 @@
   ],
   "author": "Gabriel Reitz Giannattasio <g@gartz.me>",
   "license": "ISC",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/gartz/node-bind-std-to-console.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gartz/node-bind-std-to-console.git"
   },
   "bugs": {
-    "url" : "https://github.com/gartz/node-bind-std-to-console/issues"
+    "url": "https://github.com/gartz/node-bind-std-to-console/issues"
   },
   "devDependencies": {
     "nodemon": "^1.14.12"
