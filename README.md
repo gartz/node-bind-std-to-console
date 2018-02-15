@@ -27,6 +27,18 @@ require('bind-std-to-console');
 // The logic from your server app
 ```
 
+## Custom bind
+
+By default `stdout` will bind to `console.log` and `stderr` will bind to `console.error`, that is customizable to reduce the noise in the console.
+
+Example to bind it to `console.debug` and `console.warn`:
+
+```js
+const bstd = require('bind-std-to-console');
+bstd.stdoutToConsole = console.debug;
+bstd.stderrToConsole = console.warn;
+```
+
 ## Demo
 
 Enabled:

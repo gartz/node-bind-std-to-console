@@ -15,7 +15,12 @@ function BindStdToConsole() {
     this._stderrRaw = undefined;
     this._stderrWrite = undefined;
 
-    this.started = false;
+    this._started = false;
+
+    // Method used to pipe the stdout
+    this.stdoutToConsole = console.log;
+    // method used to pipe the stderr
+    this.stderrToConsole = console.error;
 
     if (process.env.NODE_ENV === 'development') {
         this.start();
@@ -26,10 +31,10 @@ BindStdToConsole.prototype.start = function () {
     const self = this;
 
     // Avoid to be executed twice
-    if (this.started) {
+    if (this._started) {
         return;
     }
-    this.started = true;
+    this._started = true;
 
     this._stdoutRaw = process.stdout.write;
     this._stderrRaw = process.stderr.write;
@@ -56,7 +61,7 @@ BindStdToConsole.prototype.start = function () {
                 const log = self._stdoutIncompleteLine.slice(0, breakLine);
                 self._stdoutIncompleteLine = self._stdoutIncompleteLine.slice(breakLine + 1) || '';
                 self._stdoutChunkFromConsole = chunk;
-                console.log(log);
+                self.stdoutToConsole.call(console, log);
             }
             self._stdoutWriteToOrigin(chunk);
             callback();
@@ -99,7 +104,7 @@ BindStdToConsole.prototype.start = function () {
                 const log = self._stderrIncompleteLine.slice(0, breakLine);
                 self._stderrIncompleteLine = self._stderrIncompleteLine.slice(breakLine + 1) || '';
                 self._stderrChunkFromConsole = chunk;
-                console.error(log);
+                self.stderrToConsole.call(console, log);
             }
             self._stderrWriteToOrigin(chunk);
             callback();
@@ -122,7 +127,7 @@ BindStdToConsole.prototype.start = function () {
 };
 
 BindStdToConsole.prototype.stop = function () {
-    this.started = false;
+    this._started = false;
     if (this._stdoutWrite === process.stdout.write && this._stdoutRaw) {
         process.stdout.write = this._stdoutRaw;
         console._stdout = process.stdout;
